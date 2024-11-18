@@ -2,7 +2,7 @@ const parcel = require("../models/Parcel");
 
 //Create a parcel
 
- const createParcel =async (req, res)=>{
+const createParcel =async (req, res)=>{
     try {
         const newParcel =  parcel(req.body);
         const parcel = await newParcel.save();
@@ -15,7 +15,7 @@ const parcel = require("../models/Parcel");
 
 // Get all parcels
 
- const getAllparcels =async (req,res)=>{
+const getAllparcels =async (req,res)=>{
     
     try {
         const parcels = await parcel.find().sort({createdAt:-1});
@@ -27,10 +27,10 @@ const parcel = require("../models/Parcel");
 
 // Update the parecl
 
- const UpdateParcel = async (req,res)=>{
+const UpdateParcel = async (req,res)=>{
 
     try {
-        const parcel = await parcel.findByid(req.params.id);
+        const parcel = await parcel.findById(req.params.id);
         res.status(201).json(parcel)
     } catch (error) {
         res.status(500).json(error)
@@ -41,7 +41,7 @@ const parcel = require("../models/Parcel");
 
  const getOneParcel = async (req, res)=>{
     try {
-        const parcel = await parcel.findByid(req.params.id)
+        const parcel = await parcel.findById(req.params.id)
         res.status(200).json(parcel)
     } catch (error) {
         res.status(500).json(error)
@@ -50,10 +50,10 @@ const parcel = require("../models/Parcel");
 
   // get User's Parcel
 
- const getUsersparcel = async(req, res)=>{
+const getUsersparcel = async(req, res)=>{
     try {
         const parcels = await parcel.find({senderemail:req.body.email}).sort({createdAt:-1});
-        res.status(200).json(parcel)
+        res.status(200).json(parcel);
     } catch (error) {
         res.status(500).json(error)
     }
@@ -61,7 +61,7 @@ const parcel = require("../models/Parcel");
 
   //Delete a parcel
 
- const deleteParcel =async(req, res)=>{
+const deleteParcel =async(req, res)=>{
 
     try {
         await parcel.findByIdAndDelete(req.params.id);
