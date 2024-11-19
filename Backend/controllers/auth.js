@@ -1,4 +1,4 @@
-const cryptoJs = require("crypto-js");
+const CryptoJS = require("crypto-js");
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
 const dotenv = require("dotenv");
@@ -23,7 +23,7 @@ dotenv.config();
 
     try {
         const user = await newUser.save();
-        res.status(201).json(user)
+        res.status(201).json(user);
     } catch (error) {
         res.status(500).json(error)
     }
@@ -38,7 +38,7 @@ dotenv.config();
              return res.status(401).json(" you have not registered");
            }
 
-        const hashedPassword =cryptoJs.AES.decrypt(
+        const hashedPassword =CryptoJS.AES.decrypt(
             user.password,
             process.env.PASS
         )
