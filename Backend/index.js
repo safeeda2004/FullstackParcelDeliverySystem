@@ -3,7 +3,7 @@ const dotenv = require("dotenv");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const authRoute = require("./routes/auth");
-const userROUTE = require("./routes/User");
+const useRoute = require("./routes/User");
 const parcelRoute = require("./routes/parcel");
 
 dotenv.config();
@@ -15,9 +15,9 @@ app.use(express.json());
 
 //ROUTES
 
-app.use("/auth",authRoute);
-app.use("/users",userROUTE);
-app.use("/parcels",parcelRoute);
+app.use("/api/v1/auth", authRoute);
+app.use("/api/v1/users", useRoute);
+app.use("/api/v1/parcels", parcelRoute);
 
 //DATABASE CONNECTION
 const DB = process.env.DB;
@@ -28,7 +28,6 @@ console.log(err)
 })
 
 //SERVER
-
 const PORT = process.env.PORT;
 
 app.listen(PORT, () =>{
