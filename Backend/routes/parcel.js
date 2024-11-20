@@ -1,23 +1,27 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const { createParcel, getAllparcels, UpdateParcel, getOneParcel, getUserparcel, deleteParcel } = require("../controllers/parcel");
+const { createParcel, getAllParcels, updateParcel, getOneParcel, getUserParcel, deleteParcel } = require("../controllers/parcel");
+const { verifyToken, verifyTokenAndAuthorization } = require('../middlewares/verifyToken');
 
-// ADD PARCEL
-router.post("/", createParcel);
+//AD THE PARCEL
+router.post("/",verifyToken, createParcel)
 
-// GET ALL PARCELS
-router.get("/", getAllparcels);
+//GET ALL PARCELS
 
-// UPDATE PARCEL
-router.put("/:id", UpdateParcel);  
+router.get("/",verifyTokenAndAuthorization, getAllParcels)
 
-// GET ONE PARCEL
-router.get("/find/:id", getOneParcel);
+//UPDATE PARCEL
+router.put("/:id",updateParcel)
 
-// GET USER'S PARCELS
-router.post("/me", getUserparcel);
+//GET  ONE PARCEL
+router.get("/find/:id",getOneParcel)
 
-// DELETE PARCEL
-router.delete("/:id", deleteParcel);  
+//GET USERS PARCEL
+router.post("/me",getUserParcel)
+
+//DELETE PARCEL
+
+router.delete("/:id",deleteParcel)
+
 
 module.exports = router;

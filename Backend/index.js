@@ -9,27 +9,27 @@ const parcelRoute = require("./routes/parcel");
 dotenv.config();
 const app = express();
 
-//MIDDLEWARES
+// Middlewares
 app.use(cors());
 app.use(express.json());
 
-//ROUTES
-
+// Routes
 app.use("/api/v1/auth", authRoute);
 app.use("/api/v1/users", useRoute);
-app.use("/api/v1/parcels", parcelRoute);
+app.use("/api/v1/parcels", parcelRoute);  // This mounts the parcelRoute
 
-//DATABASE CONNECTION
+// Database connection
 const DB = process.env.DB;
-mongoose.connect(DB).then(()=>{
+mongoose.connect(DB)
+  .then(() => {
     console.log("DB connection is successful");
-}).catch((err)=>{
-console.log(err)
-})
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
-//SERVER
-const PORT = process.env.PORT;
-
-app.listen(PORT, () =>{
-    console.log(`Server is running on port ${PORT}`)
-})
+// Server
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
