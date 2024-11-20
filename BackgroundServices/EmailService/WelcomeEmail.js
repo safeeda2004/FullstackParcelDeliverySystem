@@ -1,9 +1,8 @@
 const ejs = require("ejs");
 const dotenv = require("dotenv");
-const sendmail = require("../helpers/sendmail");
+const sendMail = require("../helpers/sendmail");
 const User = require("../models/User");
 const CryptoJs=require("crypto-js");
-const sendMail = require("../helpers/sendmail");
 
     dotenv.config();
 
