@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar";
 import Menu from "./components/Menu";
 import Footer from "./components/Footer";
 import Users from "./pages/Users";
+import Login from "./pages/Login";
 
 function App() {
   
@@ -44,6 +45,11 @@ function App() {
         }
       ]
     },
+
+    {
+      path:"/login",
+      element:<Login />,
+    }
     
   ])
  return <>
