@@ -7,6 +7,8 @@ import Menu from "./components/Menu";
 import Footer from "./components/Footer";
 import Users from "./pages/Users";
 import Login from "./pages/Login";
+import NewParcel from "./pages/NewParcel";
+import NewUser from "./pages/NewUser"
 
 function App() {
   
@@ -37,9 +39,15 @@ function App() {
         {path:"/parcels",
           element:<Parcels />
         },
+        {path:"/newparcel",
+          element:<NewParcel />
+        },
+        {path:"/newuser",
+          element:<NewUser />
+        },
         {path:"/parcel/:parcelId",
           element:<Parcel />
-        },
+        },     
         {path:"/Users",
           element:<Users />
         }
