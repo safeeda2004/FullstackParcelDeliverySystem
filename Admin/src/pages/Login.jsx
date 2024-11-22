@@ -1,10 +1,9 @@
 
-
 const Login = () => {
   return (
-    <div>
-      Login
-    </div>
+    <div className="text-3xl text-white">Login </div>
+      
+
   )
 }
 

@@ -19,7 +19,7 @@ const SendParcelPendingEmail = async() =>{
                 to:parcel.to,
                 recipientname:parcel.recipientname,
                 cost:parcel.cost,
-                weight: parcel.weight,
+                weight:parcel.weight,
                 note:parcel.note
             },
             async(err, data)=>
@@ -35,8 +35,7 @@ const SendParcelPendingEmail = async() =>{
                     await sendMail(messageOption);
                  } catch (error) {
                     console.log(error)
-                    
-                 }
+                }
             }
         );
 
@@ -62,9 +61,9 @@ const SendParcelPendingEmail = async() =>{
 
              try {
                 await sendMail(messageOption);
-                await Parcel.findByIdAndUpdate(parcel._id,{$set: {status: 1}})
+                await Parcel.findByIdAndUpdate(parcel._id,{$set: {status: 1 }})
              } catch (error) {
-                console.log(error)            
+                console.log(error);         
              }
         }
     ); 
@@ -73,4 +72,4 @@ const SendParcelPendingEmail = async() =>{
 }
 
 
-module.exports={SendParcelPendingEmail}
+module.exports={ SendParcelPendingEmail };

@@ -6,7 +6,7 @@ const Parcel = require("../models/Parcel");
 dotenv.config();
 
 const sendParcelDeliveredEmail = async() => {
-    const parcels = await  Parcel.find({status: 2 });
+    const parcels = await  Parcel.find({ status: 2 });
 
     if(parcels.length > 0) {
 
@@ -62,7 +62,7 @@ const sendParcelDeliveredEmail = async() => {
 
              try {
                 await sendMail(messageOption);
-                await Parcel.findByIdAndUpdate(parcel._id,{$set: {status: 1}})
+                await Parcel.findByIdAndUpdate(parcel._id,{$set: { status: 1 }})
              } catch (error) {
                 console.log(error);         
              }
