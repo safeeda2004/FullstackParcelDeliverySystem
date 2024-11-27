@@ -1,7 +1,7 @@
 import {Link} from "react-router-dom"
 const Navbar = () => {
   return (
-    <div className="h-[180px] bg-[#e9eb77] flex items-center justify-between px-10">
+    <div className="h-[100px] bg-[#e9eb77] flex items-center justify-between px-10">
       
       <img src="/logo.png" alt=" height=200px" width="200px" />
 

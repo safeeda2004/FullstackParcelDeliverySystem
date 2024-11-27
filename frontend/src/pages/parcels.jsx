@@ -107,10 +107,10 @@ const parcels = () => {
   return (
     <div className="flex flex-col items-center justify-center mt-[3%] mr-[5%] ml-[5%] ">
 
-      <div className="bg-[#fff] h-auto w-[70vw] rounded-md p-[30px]">
-       <Link to="/myparcels">
-       <FaArrowLeft className="text-[#444] text-[1px] m-2 cursor-pointer" />
-       </Link>
+    <div className="bg-[#fff] h-auto w-[70vw] rounded-md p-[30px]">
+      <Link to="/myparcels">
+         <FaArrowLeft className="text-[#444] text-[1px] m-2 cursor-pointer" />
+      </Link>
 
 
       <div className="flex justify-between p-[10px]">

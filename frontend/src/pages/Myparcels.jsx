@@ -45,7 +45,7 @@ const Myparcels = () => {
         </div>
         <div className="flex flex-col ">
           <span>To: Sydney, Australia</span>
-          <button className="bg-[#555] text-white w-[100px] cursor-pointer p-[5px] ">
+          <button className="bg-[#555] cursor-pointer text-white w-[100px]  p-[5px] ">
             Pending
           </button>
         </div>
@@ -53,7 +53,7 @@ const Myparcels = () => {
       <div className="flex justify-between bg-[#d9d9d9] h-[150px] w-[60w] m-[20px] p-[20px] ">
         <div>
           <ul>
-            <li>from: Ontario, USA</li>
+            <li>From: Ontario, USA</li>
             <li>Weight: 200g</li>
             <li>Date:26/9/2024</li>
             <li>Sender: james Doe</li>
@@ -61,7 +61,7 @@ const Myparcels = () => {
         </div>
         <div className="flex flex-col ">
           <span>To: Sydney, Australia</span>
-          <button className="bg-[#555] text-white w-[100px] cursor-pointer p-[5px] ">
+          <button className="bg-[#555] cursor-pointer text-white w-[100px]  p-[5px] ">
             Pending
           </button>
         </div>
@@ -69,7 +69,7 @@ const Myparcels = () => {
       <div className="flex justify-between bg-[#d9d9d9] h-[150px] w-[60w] m-[20px] p-[20px] ">
         <div>
           <ul>
-            <li>from: Ontario, USA</li>
+            <li>From: Ontario, USA</li>
             <li>Weight: 200g</li>
             <li>Date:26/9/2024</li>
             <li>Sender: james Doe</li>
@@ -77,7 +77,7 @@ const Myparcels = () => {
         </div>
         <div className="flex flex-col ">
           <span>To: Sydney, Australia</span>
-          <button className="bg-[#287a14] text-white w-[100px] cursor-pointer p-[5px] ">
+          <button className="bg-[#287a14] cursor-pointer text-white w-[100px]  p-[5px] ">
             Delivered
           </button>
         </div>
