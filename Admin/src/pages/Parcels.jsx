@@ -1,22 +1,32 @@
 import { DataGrid  } from '@mui/x-data-grid';
+import { useState, useEffect } from 'react';
 import { FaTrash } from "react-icons/fa";
 import { Link } from 'react-router-dom';
+import { publicRequest } from '../requestMethods';
 const Parcels = () => {
+
+  const [data, setData ] = useState([]);
+
   const columns = [
-    { field: 'id', headerName: ' ID', width: 90 },
-    { field: 'Sendername', headerName: 'Sendername', width: 150 },
-    { field: 'recipientname', headerName: 'recipientname', width: 130 },
-    { field: 'from', headerName: 'from', width: 130 },
-    { field: 'to', headerName: 'to', width: 150 },  
-    { field: 'cost', headerName: 'cost ($)', type: 'number', width:150 },
+    { field: '_id', headerName: ' ID', width: 90 },
+    { field: 'Sendername', headerName: 'Sender Name', width: 150 },
+    { field: 'recipientname', headerName: 'Recipient Name', width: 130 },
+    { field: 'from', headerName: 'From', width: 130 },
+    { field: 'to', headerName: 'To', width: 150 }, 
+
+    { field: 'cost', headerName: 'Cost ($)', type: 'number', width:150 },
     { 
       field: 'edit', 
       headerName: 'Edit',
        width:150 ,
-      rendercell:()=>{
+      renderCell:(params)=>{
         return(
           <>
-          <button className='bg-teal-500 text-white cursor-pointer w-[70px]'>Edit</button>
+        <Link to={`/parcel/${params.row._id}`}>
+          <button className="bg-teal-500 text-white cursor-pointer w-[70px]">
+            Edit
+          </button>
+        </Link>
           </>
         )
       }
@@ -26,83 +36,41 @@ const Parcels = () => {
       field: 'delete', 
       headerName: 'Delete',
        width:150 ,
-      rendercell:()=>{
+      renderCell:(params)=>{
         return(
           <>
-          < FaTrash />
+          < FaTrash className="text-red-500 cursor-pointer m-2" onClick={handleDelete(params.row._id)}  />
           </>
-        )
-      }
+        );
+      },
     },
 
   ];
-  const rows   = [
-    { id: 1, 
-      Sendername: 'John Doe',
-       recipientname: 'Jane Smith', 
-       from: 'NewYork',
-        to: 'london',
-         weight:2.5,
-          cost:25
-         },
-    { id: 2,
-       Sendername: 'Nathasha',
-       recipientname: ' Wilson',
-        from: 'chicago',
-         to: 'Europe',
-         weight:1.5,
-          cost:15 
-        },
-    { id: 3,
-       Sendername: 'Tony', 
-      recipientname: ' Peter', 
-      from: 'Paris',
-       to: 'Finland',
-        weight:5, 
-          cost:30
-         },
-    { id: 4,
-       Sendername: 'Diana', 
-       recipientname: 'Jane ', 
-       from: 'London',
-        to: 'NewYork',
-         weight:0.5,
-          cost:50
-         },
-    { id: 5,
-       Sendername: 'Stark', 
-       recipientname: ' Thomas', 
-       from: 'Switzerland', 
-       to: 'Chicago',
-        weight:4.5, 
-        cost:60 
-      },
-    { id: 6,
-       Sendername: ' Doe',
-       recipientname: ' Alice', 
-       from: 'NewYork', 
-       to: 'london',
-        weight:6.5,
-         cost:55 
-        },
-    { id: 7,
-       Sendername: 'John ', 
-       recipientname: ' Scott',
-        from: 'Africa', 
-        to: 'Uganda',
-         weight:3.5, 
-         cost:40
-         },
-    { id: 8,
-       Sendername: 'Prince',
-        recipientname: 'Lang', 
-        from: 'Oman',
-         to: 'Dubai',
-         weight:3.5,
-          cost:40
-         },
-  ];
-  
+
+  useEffect(()=>{
+
+    const getParcels = async() =>{
+      try {
+        const res = await publicRequest.get("/parcels");
+        setData(res.data);
+      } catch (error) {
+          console.log(error);      
+      }
+    };
+    getParcels();
+  }, [])
+
+  const handleDelete = async(id) =>{
+
+    try {
+      await publicRequest.delete(`/parcels/${id}`);
+      window.location.reload();
+    } catch (error) {
+      console.log(error);
+      
+    }
+  }
+
   
   return (
     <div className="m-[30px] bg-[#fff] p-[20px]">
@@ -115,12 +83,13 @@ const Parcels = () => {
        </Link>
           </div>
           <DataGrid 
-          rows={rows} 
+          rows={data} 
+          getRowId={(row)=> row._id}
           columns={columns}
           checkboxSelection
            />
          </div>        
-  )
+  );
 }
 
-export default Parcels
+export default Parcels;

@@ -1,5 +1,25 @@
-
+import { useState, useEffect } from "react";
+import {useLocation} from "react-router-dom";
+import { publicRequest } from "../requestMethods";
 const Parcel = () => {
+  const [Parcel,setParcel] = useState({});
+  const location = useLocation();
+  const parcelId = location.pathname.split("/")[2];
+ 
+
+  useEffect(()=>{
+   const getParcel = async() =>{
+    try {
+      const res = await publicRequest.get(".parcels/find/" + parcelId);
+      setParcel(res.data)
+    } catch (error) {
+      console.log(error)     
+    }
+  };
+    getParcel()
+  },[parcelId])
+
+
   return (
     <div className="m-[30px] bg-[#fff] p-[20px]">
     <h2 className="font-semibold">Parcel</h2>
@@ -7,8 +27,9 @@ const Parcel = () => {
   
       <div className="flex flex-col my-[20px]">
        <label htmlFor="">From</label>
-       <input type="text"  
-       placeholder="Ontario USA"
+       <input
+        type="text"  
+       placeholder={Parcel.from}
        className="border-2 border-[#555] border-solid p-[10px] w-[300px]"
        />
        </div>
@@ -97,4 +118,4 @@ const Parcel = () => {
   )
 }
 
-export default Parcel
+export default Parcel;
