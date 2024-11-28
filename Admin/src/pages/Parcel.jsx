@@ -97,4 +97,4 @@ const Parcel = () => {
   )
 }
 
-export default Parcel
+export default Parcel;
