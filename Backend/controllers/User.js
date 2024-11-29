@@ -6,7 +6,7 @@ const User = require("../models/User");
 
     try {
         await User.findByIdAndDelete(req.params.id);
-        res.status(201).json("The user has been deleted successfuly")
+        res.status(200).json("The user has been deleted successfuly")
     } catch (error) {
         res.status(500).json(error)
     }
@@ -23,4 +23,4 @@ const User = require("../models/User");
     }
 };
 
-module.exports={getAllUsers, deleteUser}
+module.exports={getAllUsers, deleteUser};
