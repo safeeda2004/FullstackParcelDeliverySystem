@@ -64,4 +64,4 @@ dotenv.config();
     }
 };
 
-module.exports={loginUser,registerUser}
+module.exports={loginUser,registerUser};
